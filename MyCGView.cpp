@@ -7,6 +7,7 @@
 #include "MyCGDoc.h"
 #include "MyCGView.h"
 #include "DialogDrawLine.h"
+#include "DialogDrawCircle.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -438,14 +439,74 @@ void CMyCGView::Cirpot(int x0, int y0, int x, int y, int color) {
 	dc.SetPixel((x0 - x), (y0 + y), color);
 }
 
+void CMyCGView::Bres_Circle(int x0, int y0, double r, int color) {
+	int x, y, d;
+	x = 0;
+	y = (int)r;
+	d = int(3 - 2 * r);
+	while (x < y) {
+		Cirpot(x0, y0, x, y, color);
+		if (d < 0) {
+			d += 4 * x + 6;
+		} else {
+			d += 4 * (x - y) + 10;
+			y--;
+		}
+		x++;
+	}
+	if (x == y) {
+		Cirpot(x0, y0, x, y, color);
+	}
+}
+
 void CMyCGView::OnCircleBresenham()
 {
 	// TODO: Bresenham画圆算法
+	int x0 = 30;
+	int y0 = 50;
+	double r = 30;
+	int color = 0;
 
+	DialogDrawCircle dlg;
+	if (dlg.DoModal() == IDOK) {
+		x0 = dlg.m_cx;
+		y0 = dlg.m_cy;
+		r = dlg.m_cr;
+		color = dlg.m_ccolor;
+
+		Bres_Circle(x0, y0, r, color);
+	}
 }
 
 
 void CMyCGView::OnCircleMidcircle()
 {
 	// TODO: 中点画圆算法
+	int x0 = 30;
+	int y0 = 50;
+	int r = 30;
+	int color = 0;
+
+	DialogDrawCircle dlg;
+	if (dlg.DoModal() == IDOK) {
+		x0 = dlg.m_cx;
+		y0 = dlg.m_cy;
+		r = dlg.m_cr;
+		color = dlg.m_ccolor;
+
+		int x = 0;
+		int y = r;
+		int d = 1 - r;
+		Cirpot(x0, y0, x, y, color);
+		while (x < y) {
+			if (d < 0) {
+				d += 2 * x + 3;
+			} else {
+				d += 2 * (x - y) + 5;
+				y--;
+			}
+			x++;
+			Cirpot(x0, y0, x, y, color);
+		}
+	}
 }

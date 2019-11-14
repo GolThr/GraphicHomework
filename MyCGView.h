@@ -23,6 +23,7 @@ public:
 // Operations
 public:
 	void Cirpot(int x0, int y0, int x, int y, int color);
+	void Bres_Circle(int x0, int y0, double r, int color);
 
 protected:
 	CString m_ClassName;

@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DialogDrawCircle.cpp" />
     <ClCompile Include="DialogDrawLine.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MyCG.cpp" />
@@ -147,6 +148,7 @@
     <ResourceCompile Include="MyCG.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DialogDrawCircle.h" />
     <ClInclude Include="DialogDrawLine.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MyCG.h" />
