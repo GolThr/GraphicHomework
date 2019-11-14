@@ -83,7 +83,7 @@ BEGIN
         MENUITEM "保存(&S)\tCtrl+S",              ID_FILE_SAVE
         MENUITEM "另存为(&A)...",                  ID_FILE_SAVE_AS
         MENUITEM SEPARATOR
-        MENUITEM "最近文件",                        ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM "最近文件",                        ID_FILE_MRU_FILE1
         MENUITEM SEPARATOR
         MENUITEM "退出(&X)",                      ID_APP_EXIT
     END
@@ -99,10 +99,18 @@ BEGIN
     BEGIN
         MENUITEM "状态栏(&S)",                     ID_VIEW_STATUS_BAR
     END
-    POPUP "画线"
+    POPUP "画线(&l)"
     BEGIN
         MENUITEM "普通画线",                        ID_LINE_COM1
         MENUITEM "数值微分法",                       ID_LINE_DDA
+        MENUITEM "逐点比较法",                       ID_LINE_PERP
+        MENUITEM "Bresenham画线法",                ID_LINE_BRESENHAM
+        MENUITEM "中点画线法",                       ID_LINE_MIDP
+    END
+    POPUP "画圆弧"
+    BEGIN
+        MENUITEM "Bresenham算法",                 ID_ARC_BRESENHAM
+        MENUITEM "中点画圆算法",                      ID_ARC_MIDCIRCLE
     END
     POPUP "帮助(&H)"
     BEGIN

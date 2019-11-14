@@ -61,6 +61,10 @@ protected:
 	afx_msg void OnLineDda();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnLinePerp();
+	afx_msg void OnLineBresenham();
+	afx_msg void OnLineMidp();
 };
 
 #ifndef _DEBUG  // debug version in MyCGView.cpp
