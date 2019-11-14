@@ -36,6 +36,9 @@
     <ClCompile Include="DialogDrawCircle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DialogDrawEllipse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MyCG.rc">
@@ -65,6 +68,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DialogDrawCircle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogDrawEllipse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

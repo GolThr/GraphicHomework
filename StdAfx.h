@@ -33,3 +33,4 @@
 #endif // !defined(AFX_STDAFX_H__833ED530_4EB6_406F_86B0_28C388A50C98__INCLUDED_)
 #include <afxcontrolbars.h>
 #include <afxcontrolbars.h>
+#include <afxcontrolbars.h>

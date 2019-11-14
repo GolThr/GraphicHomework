@@ -69,6 +69,7 @@ public:
 	afx_msg void OnLineMidp();
 	afx_msg void OnCircleBresenham();
 	afx_msg void OnCircleMidcircle();
+	afx_msg void OnEllipseMidell();
 };
 
 #ifndef _DEBUG  // debug version in MyCGView.cpp

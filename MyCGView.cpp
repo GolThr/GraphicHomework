@@ -33,6 +33,7 @@ BEGIN_MESSAGE_MAP(CMyCGView, CView)
 	ON_COMMAND(ID_LINE_MIDP, &CMyCGView::OnLineMidp)
 	ON_COMMAND(ID_CIRCLE_BRESENHAM, &CMyCGView::OnCircleBresenham)
 	ON_COMMAND(ID_CIRCLE_MIDCIRCLE, &CMyCGView::OnCircleMidcircle)
+	ON_COMMAND(ID_ELLIPSE_MIDELL, &CMyCGView::OnEllipseMidell)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -509,4 +510,11 @@ void CMyCGView::OnCircleMidcircle()
 			Cirpot(x0, y0, x, y, color);
 		}
 	}
+}
+
+
+void CMyCGView::OnEllipseMidell()
+{
+	// TODO: ÷–µ„Õ÷‘≤À„∑®
+
 }

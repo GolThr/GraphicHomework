@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DialogDrawCircle.cpp" />
+    <ClCompile Include="DialogDrawEllipse.cpp" />
     <ClCompile Include="DialogDrawLine.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MyCG.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DialogDrawCircle.h" />
+    <ClInclude Include="DialogDrawEllipse.h" />
     <ClInclude Include="DialogDrawLine.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MyCG.h" />
