@@ -24,6 +24,7 @@ public:
 public:
 	void Cirpot(int x0, int y0, int x, int y, int color);
 	void Bres_Circle(int x0, int y0, double r, int color);
+	void ellipsePlotPoints(int xCenter, int yCenter, int x, int y, int color);
 
 protected:
 	CString m_ClassName;
@@ -70,6 +71,7 @@ public:
 	afx_msg void OnCircleBresenham();
 	afx_msg void OnCircleMidcircle();
 	afx_msg void OnEllipseMidell();
+	afx_msg void OnEllipseBresenham();
 };
 
 #ifndef _DEBUG  // debug version in MyCGView.cpp

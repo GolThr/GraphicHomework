@@ -8,6 +8,7 @@
 #include "MyCGView.h"
 #include "DialogDrawLine.h"
 #include "DialogDrawCircle.h"
+#include "DialogDrawEllipse.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -34,6 +35,7 @@ BEGIN_MESSAGE_MAP(CMyCGView, CView)
 	ON_COMMAND(ID_CIRCLE_BRESENHAM, &CMyCGView::OnCircleBresenham)
 	ON_COMMAND(ID_CIRCLE_MIDCIRCLE, &CMyCGView::OnCircleMidcircle)
 	ON_COMMAND(ID_ELLIPSE_MIDELL, &CMyCGView::OnEllipseMidell)
+	ON_COMMAND(ID_ELLIPSE_BRESENHAM, &CMyCGView::OnEllipseBresenham)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -512,9 +514,124 @@ void CMyCGView::OnCircleMidcircle()
 	}
 }
 
+inline int Round(const float a) { return static_cast<int>(a + 0.5); }
+
+void CMyCGView::ellipsePlotPoints(int xCenter, int yCenter, int x, int y, int color) {
+	CClientDC dc(this);
+	dc.SetPixel(xCenter + x, yCenter + y, color);
+	dc.SetPixel(xCenter - x, yCenter + y, color);
+	dc.SetPixel(xCenter + x, yCenter - y, color);
+	dc.SetPixel(xCenter - x, yCenter - y, color);
+}
 
 void CMyCGView::OnEllipseMidell()
 {
 	// TODO: ÷–µ„Õ÷‘≤À„∑®
+	int xCenter = 100;
+	int yCenter = 100;
+	int Rx = 50;
+	int Ry = 30;
+	int color = 0;
 
+	DialogDrawEllipse dlg;
+	if (dlg.DoModal() == IDOK) {
+		xCenter = dlg.m_cenx;
+		yCenter = dlg.m_ceny;
+		Rx = dlg.m_rx;
+		Ry = dlg.m_ry;
+		color = dlg.m_color;
+
+		int Rx2 = Rx * Rx;
+		int Ry2 = Ry * Ry;
+		int twoRx2 = 2 * Rx2;
+		int twoRy2 = 2 * Ry2;
+		int p;
+		int x = 0;
+		int y = Ry;
+		int px = 0;
+		int py = twoRx2 * y;
+		// Plot the initial point in each quadrant
+		ellipsePlotPoints(xCenter, yCenter, x, y, color);
+		/* Region 1 */
+		p = Round(Ry2 - (Rx2 * Ry) + (0.25 * Rx2));
+		while (px < py) {
+			x++;
+			px += twoRy2;
+			if (p < 0) {
+				p += Ry2 + px;
+			}
+			else {
+				y--;
+				py -= twoRx2;
+				p += Ry2 + px - py;
+			}
+			ellipsePlotPoints(xCenter, yCenter, x, y, color);
+		}
+		/* Region 2 */
+		p = Round(Ry2 * (x + 0.5) * (x + 0.5) + Rx2 * (y - 1) * (y - 1) - Rx2 * Ry2);
+		while (y > 0) {
+			y--;
+			py -= twoRx2;
+			if (p > 0) {
+				p += Rx2 - py;
+			}
+			else {
+				x++;
+				px += twoRx2;
+				p += Rx2 - py + px;
+			}
+			ellipsePlotPoints(xCenter, yCenter, x, y, color);
+		}
+	}
+}
+
+
+void CMyCGView::OnEllipseBresenham()
+{
+	// TODO: Bresenhamª≠Õ÷‘≤À„∑®
+	int xc = 100;
+	int yc = 100;
+	int a = 50;
+	int b = 30;
+	int color = 0;
+
+	DialogDrawEllipse dlg;
+	if (dlg.DoModal() == IDOK) {
+		xc = dlg.m_cenx;
+		yc = dlg.m_ceny;
+		a = dlg.m_rx;
+		b = dlg.m_ry;
+		color = dlg.m_color;
+
+		int sqa = a * a;
+		int sqb = b * b;
+		int x = 0;
+		int y = b;
+		int d = 2 * sqb - 2 * b * sqa + sqa;
+		ellipsePlotPoints(xc, yc, x, y, color);
+		int P_x = Round((double)sqa / sqrt((double)(sqa + sqb)));
+		while (x <= P_x) {
+			if (d < 0) {
+				d += 2 * sqb * (2 * x + 3);
+			}
+			else {
+				d += 2 * sqb * (2 * x + 3) - 4 * sqa * (y - 1);
+				y--;
+			}
+			x++;
+			ellipsePlotPoints(xc, yc, x, y, color);
+		}
+		d = sqb * (x * x + x) + sqa * (y * y - y) - sqa * sqb;
+		while (y >= 0) {
+			ellipsePlotPoints(xc, yc, x, y, color);
+			y--;
+			if (d < 0) {
+				x++;
+				d = d - 2 * sqa * y - sqa + 2 * sqb * x + 2 * sqb;
+			}
+			else {
+				d = d - 2 * sqa * y - sqa;
+			}
+		}
+	}
 }

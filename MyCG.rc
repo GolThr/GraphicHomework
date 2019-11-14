@@ -112,9 +112,10 @@ BEGIN
         MENUITEM "Bresenham算法",                 ID_CIRCLE_BRESENHAM
         MENUITEM "中点画圆算法",                      ID_CIRCLE_MIDCIRCLE
     END
-    POPUP "画弧(&A)"
+    POPUP "画椭圆(&A)"
     BEGIN
         MENUITEM "中点椭圆算法",                      ID_ELLIPSE_MIDELL
+        MENUITEM "Bresenham算法",                 ID_ELLIPSE_BRESENHAM
     END
     POPUP "帮助(&H)"
     BEGIN
