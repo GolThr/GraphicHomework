@@ -30,6 +30,8 @@ BEGIN_MESSAGE_MAP(CMyCGView, CView)
 	ON_COMMAND(ID_LINE_PERP, &CMyCGView::OnLinePerp)
 	ON_COMMAND(ID_LINE_BRESENHAM, &CMyCGView::OnLineBresenham)
 	ON_COMMAND(ID_LINE_MIDP, &CMyCGView::OnLineMidp)
+	ON_COMMAND(ID_CIRCLE_BRESENHAM, &CMyCGView::OnCircleBresenham)
+	ON_COMMAND(ID_CIRCLE_MIDCIRCLE, &CMyCGView::OnCircleMidcircle)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -422,4 +424,28 @@ void CMyCGView::OnLineMidp()
 			}
 		}
 	}
+}
+
+void CMyCGView::Cirpot(int x0, int y0, int x, int y, int color) {
+	CClientDC dc(this);
+	dc.SetPixel((x0 + x), (y0 + y), color);
+	dc.SetPixel((x0 + y), (y0 + x), color);
+	dc.SetPixel((x0 + y), (y0 - x), color);
+	dc.SetPixel((x0 + x), (y0 - y), color);
+	dc.SetPixel((x0 - x), (y0 - y), color);
+	dc.SetPixel((x0 - y), (y0 - x), color);
+	dc.SetPixel((x0 - y), (y0 + x), color);
+	dc.SetPixel((x0 - x), (y0 + y), color);
+}
+
+void CMyCGView::OnCircleBresenham()
+{
+	// TODO: Bresenham画圆算法
+
+}
+
+
+void CMyCGView::OnCircleMidcircle()
+{
+	// TODO: 中点画圆算法
 }

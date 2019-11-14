@@ -22,6 +22,7 @@ public:
 
 // Operations
 public:
+	void Cirpot(int x0, int y0, int x, int y, int color);
 
 protected:
 	CString m_ClassName;
@@ -65,6 +66,8 @@ public:
 	afx_msg void OnLinePerp();
 	afx_msg void OnLineBresenham();
 	afx_msg void OnLineMidp();
+	afx_msg void OnCircleBresenham();
+	afx_msg void OnCircleMidcircle();
 };
 
 #ifndef _DEBUG  // debug version in MyCGView.cpp
