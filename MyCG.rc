@@ -99,7 +99,7 @@ BEGIN
     BEGIN
         MENUITEM "状态栏(&S)",                     ID_VIEW_STATUS_BAR
     END
-    POPUP "画线(&l)"
+    POPUP "画线(&L)"
     BEGIN
         MENUITEM "普通画线",                        ID_LINE_COM1
         MENUITEM "数值微分法",                       ID_LINE_DDA
@@ -107,11 +107,12 @@ BEGIN
         MENUITEM "Bresenham画线法",                ID_LINE_BRESENHAM
         MENUITEM "中点画线法",                       ID_LINE_MIDP
     END
-    POPUP "画圆弧"
+    POPUP "画圆(&C)"
     BEGIN
         MENUITEM "Bresenham算法",                 ID_ARC_BRESENHAM
         MENUITEM "中点画圆算法",                      ID_ARC_MIDCIRCLE
     END
+    MENUITEM "画弧(&A)",                      0
     POPUP "帮助(&H)"
     BEGIN
         MENUITEM "关于 MyCG(&A)...",              ID_APP_ABOUT
